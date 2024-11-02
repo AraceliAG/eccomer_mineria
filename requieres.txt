@@ -1,0 +1,17 @@
+#ESTRUCTURA MVC DEL PROYECTO
+
+npm install express --save #PAQUETES QUE SE TRABAJARÁN CON NODEJS
+
+npm install express-generator #CREACIÓN DE TODA NUESTRA ESTRUCTURA DEL PROYECTO
+
+express --view=ejs #MOTOR EJS PARA TODA LA ESTRUCTURA
+
+npm instrall #INSTALACIÓN DE TODOS LOS REQUERRIMIENTOS
+
+npm start #INSTALACIÓN DE NUESTRO PROYECTO
+
+--------------------------------------------------------------------------------------------
+
+#MODULO PAL SQL 
+
+npm install sql
