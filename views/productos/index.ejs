@@ -46,57 +46,59 @@
     </div>
 </div>
 
-<!-- SOLO PRODUCTOS-->
+<!-- SOLO PRODUCTOS VIDEOJUEGOS-->
 <div class="container mt-5">
   <div id="productCarousel" class="carousel slide" data-bs-ride="false">
-      <!-- Indicadores -->
-      <ol class="carousel-indicators">
-          <% productos.forEach((producto, index) => { %>
-              <li data-bs-target="#productCarousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+    <h3>VIDEOJUEGOS</h3>
+    <!-- Indicadores -->
+    <ol class="carousel-indicators">
+      <% productos.forEach((producto, index) => { %>
+        <li data-bs-target="#productCarousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+      <% }) %>
+    </ol>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row">
+          <% productos.slice(0, 4).forEach((producto) => { %>
+            <div class="col text-center"> <!-- Añadir clase para centrar el contenido -->
+              <div class="product-box"> <!-- Contenedor del producto -->
+                <img src="<%= producto.imagen %>" class="d-block w-100" alt="<%= producto.nombre %>">
+                <h5><%= producto.nombre %></h5>
+                <h3>$<%= producto.precio %></h3> <!-- Añadir símbolo de moneda -->
+              </div>
+            </div>
           <% }) %>
-      </ol>
-
-      <div class="carousel-inner">
-          <div class="carousel-item active">
-              <div class="row">
-                  <% productos.slice(0, 4).forEach((producto, index) => { %>
-                      <div class="col">
-                          <img src="<%= producto.imagen %>" class="d-block w-100" alt="<%= producto.nombre %>">
-                          <div class="carousel-caption d-none d-md-block">
-                              <h5><%= producto.nombre %></h5>
-                              <p>Descripción del producto aquí.</p>
-                          </div>
-                      </div>
-                  <% }) %>
-              </div>
-          </div>
-          <% for (let i = 4; i < productos.length; i += 4) { %>
-              <div class="carousel-item">
-                  <div class="row">
-                      <% productos.slice(i, i + 4).forEach((producto) => { %>
-                          <div class="col">
-                              <img src="<%= producto.imagen %>" class="d-block w-100" alt="<%= producto.nombre %>">
-                              <div class="carousel-caption d-none d-md-block">
-                                  <h5><%= producto.nombre %></h5>
-                                  <p>Descripción del producto aquí.</p>
-                              </div>
-                          </div>
-                      <% }) %>
-                  </div>
-              </div>
-          <% } %>
+        </div>
       </div>
+      <% for (let i = 4; i < productos.length; i += 4) { %>
+        <div class="carousel-item">
+          <div class="row">
+            <% productos.slice(i, i + 4).forEach((producto) => { %>
+              <div class="col text-center"> <!-- Añadir clase para centrar el contenido -->
+                <div class="product-box"> <!-- Contenedor del producto -->
+                  <img src="<%= producto.imagen %>" class="d-block w-100" alt="<%= producto.nombre %>">
+                  <h5><%= producto.nombre %></h5>
+                  <h3>$<%= producto.precio %></h3> <!-- Añadir símbolo de moneda -->
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      <% } %>
+    </div>
 
-      <a class="carousel-control-prev" href="#productCarousel" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Anterior</span>
-      </a>
-      <a class="carousel-control-next" href="#productCarousel" role="button" data-bs-slide="next" style="background-color: #007bff; color: #fff;"> <!-- Cambia el color de fondo -->
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Siguiente</span>
-      </a>
+    <a class="carousel-control-prev" href="#productCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#productCarousel" role="button" data-bs-slide="next" style="background-color: #007bff; color: #fff;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Siguiente</span>
+    </a>
   </div>
 </div>
+
 
 
 

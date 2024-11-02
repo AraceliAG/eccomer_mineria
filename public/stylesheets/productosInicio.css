@@ -1,0 +1,21 @@
+
+.product-box {
+  border: 1px solid #ccc; /* Borde alrededor del cuadro */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 15px; /* Espaciado interno */
+  background-color: #f9f9f9; /* Color de fondo */
+  height: 300px; /* Altura fija para todos los cuadros */
+  display: flex; /* Usar flexbox para alinear los elementos */
+  flex-direction: column; /* Colocar elementos en columna */
+  justify-content: space-between; /* Espaciado entre elementos */
+  transition: box-shadow 0.3s; /* Transición suave para efectos */
+}
+
+.product-box:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al pasar el mouse */
+}
+
+.product-box img {
+  max-height: 150px; /* Altura máxima de la imagen */
+  object-fit: contain; /* Mantener proporciones de la imagen */
+}
