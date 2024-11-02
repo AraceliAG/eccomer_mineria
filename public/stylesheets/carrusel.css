@@ -1,0 +1,6 @@
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 200px; /* Tamaño fijo */
+    height: auto; /* Mantiene la relación de aspecto */
+    margin: auto;
+}
