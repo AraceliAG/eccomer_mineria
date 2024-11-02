@@ -4,5 +4,5 @@ INTERACTUAR CON LOS REGISTROS*/
 
 module.exports = {
     obtener:function(conexion, funcion){
-        conexion.query("SELECT * FROM test", funcion);
+        conexion.query("SELECT nombre, imagen FROM productos", funcion);
     }}
