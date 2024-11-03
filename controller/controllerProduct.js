@@ -4,21 +4,20 @@ module.exports={
 
 
 
-    index:function(req, res){
+    index:function(req, res){ //VISUALIZACIÓN DE NUSTRO HOME PRINCIPAL
 
-        producto.obtener(con, function(err, datos){
+        producto.obtener(con, function(err, datos){ 
             console.log(datos)
-            res.render('productos/index', {title:'Aplication', productos:datos})
+            res.render('productos/index', {title:'Aplication', productos:datos}) //PURO VER
         })
 
     },
     
 
-    seleccion:function(req, res){
+    seleccion:function(req, res){ //PARA VER NUESTRA VISTA DE DESCRIP PRODUCTO DE SELECCIÓN
         console.log(req.body);
+        res.render("productos/descripcion")
         
-
-        res.redirect("productos/descripcion")
             
             
         
