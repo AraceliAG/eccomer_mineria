@@ -8,17 +8,19 @@ body {
     font-family: Arial, sans-serif;
 }
 
+
+
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #ddd;
+    background-color: #bd70e66d;
+    border-bottom: 1px solid #585454;
 }
 
 .logo img {
-    height: 40px;
+    height: 45px;
     /* Ajusta el tamaño del logo según tus necesidades */
 }
 
@@ -57,9 +59,9 @@ header {
 }
 
 .navbar-nav .nav-link {
-    color: #007bff;
+    color: #c1cdda;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #0056b3;
+    color: #9aa0a6;
 }
