@@ -1,41 +1,30 @@
 <%- include('./layout/cabecera.ejs') %>
 
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>id</th>
-            <th>nombre</th>
-            <th>departamento</th>
-            <th>precio</th>
-            <th>imagen</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% for( let producto = 0; producto < productos.length; producto++ ) { %>
-            <tr>
-                <td scope="row"></td>
-                <td><%=productos[producto].idproductos%></td>
-                <td><%=productos[producto].nombre%></td>
-                <td><%=productos[producto].departamento%></td>
-                <td><%=productos[producto].precio%></td>
-                <td><%=productos[producto].imagen%></td>
-                <td><%=productos[producto].descripcion%></td>
-            </tr>
-        
+<div class="container mt-4">
+    <div class="row">
+        <% for (let producto = 0; producto < productos.length; producto++) { %>
+            <div class="col-md-12 mb-4">
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <img src="<%= productos[producto].imagen %>" class="img-fluid" alt="<%= productos[producto].nombre %>" style="max-height: 400px; object-fit: cover;">
+                        </div>
+                        <div class="col-md-6 d-flex flex-column justify-content-between">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= productos[producto].nombre %></h5>
+                                <p class="card-text"><strong>Precio: $<%= productos[producto].precio %></strong></p>
+                                <div class="d-flex">
+                                    <a href="#" class="btn btn-primary me-2">Agregar al carrito</a>
+                                    <a href="#" class="btn btn-secondary">Agregar a Favoritos</a>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text"><small class="text-muted"><%= productos[producto].descripcion %></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <% } %>
-        
-    </tbody>
-</table>
-
-
-
-
-<div class="container">
-    <a name="" id="" class="btn btn-primary" href="#" role="button">Agregar al carrito</a>
-    <a name="" id="" class="btn btn-primary" href="#" role="button">Agregar a Favoritos</a>
-
+    </div>
 </div>
-
