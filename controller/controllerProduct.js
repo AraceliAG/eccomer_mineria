@@ -5,11 +5,15 @@ module.exports={
 
 
     index:function(req, res){ //VISUALIZACIÓN DE NUSTRO HOME PRINCIPAL
+        //PARA REALIZAR MÁS DE UNA CONSULTAS SE TIENEN QUE AGREGAR COMO SE VE AQUI PRODUCTO>PRODUCTO>PRODUCTO Y SE MANDAN
 
         producto.obtener(con, function(err, datos){ 
-            console.log(datos)
-            res.render('index', {title:'Aplication', productos:datos}) //PURO VER
+
+        producto.obtener2(con, function(err, datos2){
+
+        res.render('index', {title:'Aplication', productos:datos, productos2:datos2}) //PURO VER
         })
+    })
 
     },
     

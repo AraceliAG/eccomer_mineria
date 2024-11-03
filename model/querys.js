@@ -4,7 +4,11 @@ INTERACTUAR CON LOS REGISTROS*/
 
 module.exports = {
     obtener:function(conexion, funcion){
-        conexion.query("SELECT idproductos,nombre, imagen,precio FROM productos", funcion);
+        conexion.query("SELECT idproductos,nombre, imagen,precio FROM productos WHERE departamento='Higiene Personal'", funcion);
+    },
+
+    obtener2:function(conexion, funcion){
+        conexion.query("SELECT idproductos,nombre, imagen,precio FROM productos WHERE departamento='Videojuegos'", funcion);
     },
 
     descripcionn:function(conexion, id, funcion){

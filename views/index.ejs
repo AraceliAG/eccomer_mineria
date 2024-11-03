@@ -45,14 +45,14 @@
 
 
 
-<!-- SOLO PRODUCTOS VIDEOJUEGOS-->
+<!-- CUIDADO PERSONAL -->
 <div class="container mt-5">
-    <h3>VIDEOJUEGOS</h3>
-    <div id="productCarousel" class="carousel slide" data-bs-ride="false">
+    <h3>CUIDADO PERSONAL</h3>
+    <div id="personalCareCarousel" class="carousel slide" data-bs-ride="false">
         <!-- Indicadores -->
         <ol class="carousel-indicators">
             <% productos.forEach((producto, index) => { %>
-                <li data-bs-target="#productCarousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+                <li data-bs-target="#personalCareCarousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
             <% }) %>
         </ol>
 
@@ -60,12 +60,11 @@
             <div class="carousel-item active">
                 <div class="row">
                     <% productos.slice(0, 4).forEach((producto) => { %>
-                        <div class="col text-center"> <!-- Centrar el contenido -->
-                            <div class="product-box"> <!-- Contenedor del producto -->
+                        <div class="col text-center">
+                            <div class="product-box">
                                 <img src="<%= producto.imagen %>" class="img-fluid" alt="<%= producto.nombre %>" style="max-height: 200px; object-fit: contain;">
                                 <h5><%= producto.nombre %></h5>
                                 <h3>$<%= producto.precio %></h3>
-
                                 <form action="" method="post">
                                     <input type="hidden" name="productoId" value="<%= producto.idproductos %>">
                                     <button type="submit" class="btn btn-primary mt-2">Seleccionar</button>
@@ -84,7 +83,6 @@
                                     <img src="<%= producto.imagen %>" class="img-fluid" alt="<%= producto.nombre %>" style="max-height: 200px; object-fit: contain;">
                                     <h5><%= producto.nombre %></h5>
                                     <h3>$<%= producto.precio %></h3>
-
                                     <form action="" method="post">
                                         <input type="hidden" name="productoId" value="<%= producto.idproductos %>">
                                         <button type="submit" class="btn btn-primary mt-2">Seleccionar</button>
@@ -97,16 +95,80 @@
             <% } %>
         </div>
 
-        <a class="carousel-control-prev" href="#productCarousel" role="button" data-bs-slide="prev">
+        <a class="carousel-control-prev" href="#personalCareCarousel" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Anterior</span>
         </a>
-        <a class="carousel-control-next" href="#productCarousel" role="button" data-bs-slide="next" style="background-color: #007bff; color: #fff;">
+        <a class="carousel-control-next" href="#personalCareCarousel" role="button" data-bs-slide="next" style="background-color: #007bff; color: #fff;">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Siguiente</span>
         </a>
     </div>
 </div>
+
+<!-- SOLO PRODUCTOS VIDEOJUEGOS-->
+<div class="container mt-5">
+    <h3>VIDEOJUEGOS</h3>
+    <div id="videoGamesCarousel" class="carousel slide" data-bs-ride="false">
+        <!-- Indicadores -->
+        <ol class="carousel-indicators">
+            <% productos2.forEach((producto, index) => { %>
+                <li data-bs-target="#videoGamesCarousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+            <% }) %>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <% productos2.slice(0, 4).forEach((producto) => { %>
+                        <div class="col text-center">
+                            <div class="product-box">
+                                <img src="<%= producto.imagen %>" class="img-fluid" alt="<%= producto.nombre %>" style="max-height: 200px; object-fit: contain;">
+                                <h5><%= producto.nombre %></h5>
+                                <h3>$<%= producto.precio %></h3>
+                                <form action="" method="post">
+                                    <input type="hidden" name="productoId" value="<%= producto.idproductos %>">
+                                    <button type="submit" class="btn btn-primary mt-2">Seleccionar</button>
+                                </form>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <% for (let i = 4; i < productos2.length; i += 4) { %>
+                <div class="carousel-item">
+                    <div class="row">
+                        <% productos2.slice(i, i + 4).forEach((producto) => { %>
+                            <div class="col text-center">
+                                <div class="product-box">
+                                    <img src="<%= producto.imagen %>" class="img-fluid" alt="<%= producto.nombre %>" style="max-height: 200px; object-fit: contain;">
+                                    <h5><%= producto.nombre %></h5>
+                                    <h3>$<%= producto.precio %></h3>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="productoId" value="<%= producto.idproductos %>">
+                                        <button type="submit" class="btn btn-primary mt-2">Seleccionar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+
+        <a class="carousel-control-prev" href="#videoGamesCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#videoGamesCarousel" role="button" data-bs-slide="next" style="background-color: #007bff; color: #fff;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
+</div>
+
+
+
 
 </body>
 </html>
