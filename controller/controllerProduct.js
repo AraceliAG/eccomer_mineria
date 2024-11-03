@@ -28,19 +28,21 @@ module.exports={
     },
 
     descrip:function(req,res){
-        // Recuperamos los datos desde la sesión
+        // RECUPETRAMOS LOS DATOS
         const productoId = req.session.productoId;
 
 
         console.log("Datos recuperados: ", productoId);
 
-        producto.descripcionn(con, productoId, function(datos, err) {
+        producto.descripcionn(con, { idproductos: productoId }, function(err, datos) {
 
-            console.log(datos)
+            console.log("datos: ", datos)
 
             res.render("descripcion", {productos:datos})
 
         })
+            
+
     }
     
 
