@@ -8,15 +8,19 @@ module.exports={
 
         producto.obtener(con, function(err, datos){ 
             console.log(datos)
-            res.render('productos/index', {title:'Aplication', productos:datos}) //PURO VER
+            res.render('index', {title:'Aplication', productos:datos}) //PURO VER
         })
 
     },
     
 
     seleccion:function(req, res){ //PARA VER NUESTRA VISTA DE DESCRIP PRODUCTO DE SELECCIÓN
-        console.log(req.body);
-        res.render("productos/descripcion")
+        
+        const data = req.body
+        console.log("envio de: ", data)
+        // Guarda productoId en la sesión como un entero
+        req.session.productoId = parseInt(data.productoId, 10);
+        res.redirect("descripcion")
         
             
             
@@ -24,13 +28,19 @@ module.exports={
     },
 
     descrip:function(req,res){
-        res.render("productos/descripcion")
-        // producto.descripcionn(con, req.body, function(err, datos){
-            
-        //     res.render("productos/descripcion",{productos:datos})
-            
-            
-        // })
+        // Recuperamos los datos desde la sesión
+        const productoId = req.session.productoId;
+
+
+        console.log("Datos recuperados: ", productoId);
+
+        producto.descripcionn(con, productoId, function(datos, err) {
+
+            console.log(datos)
+
+            res.render("descripcion", {productos:datos})
+
+        })
     }
     
 

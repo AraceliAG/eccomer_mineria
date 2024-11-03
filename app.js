@@ -9,6 +9,9 @@ var usersRouter = require('./routes/users');
 
 const bodyParser = require('body-parser'); //esto quiza fue que no respondia al post
 
+
+var session = require('express-session');//LO ACABO DE PONER
+
 var app = express();
 app.use(express.static('public'));
 
@@ -21,6 +24,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+/*OJOOO SIEMPRE TIENE QUE IR EN ESTE APARTADO Y NO HASTA EL FINAL, IMPORTANTE TOMAR EN CUENTA ESTO */
+/*CONFIGURA EL MIDDLEWARE CON EL METODO session*/
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+
+}));
 
 app.use('/', indexRouter); //PRINCIPAL
 
