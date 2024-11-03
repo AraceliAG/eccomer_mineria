@@ -1,0 +1,41 @@
+<%- include('../layout/cabecera.ejs') %>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>id</th>
+            <th>nombre</th>
+            <th>departamento</th>
+            <th>precio</th>
+            <th>imagen</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for( let producto = 0; producto < productos.length; producto++ ) { %>
+            <tr>
+                <td scope="row"></td>
+                <td><%=productos[producto].idproductos%></td>
+                <td><%=productos[producto].nombre%></td>
+                <td><%=productos[producto].departamento%></td>
+                <td><%=productos[producto].precio%></td>
+                <td><%=productos[producto].imagen%></td>
+                <td><%=productos[producto].descripcion%></td>
+            </tr>
+        
+        <% } %>
+        
+    </tbody>
+</table>
+
+
+
+
+<div class="container">
+    <a name="" id="" class="btn btn-primary" href="#" role="button">Agregar al carrito</a>
+    <a name="" id="" class="btn btn-primary" href="#" role="button">Agregar a Favoritos</a>
+
+</div>
+

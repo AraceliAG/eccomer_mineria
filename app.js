@@ -7,6 +7,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index'); //RUTA PRINCIPAL 
 var usersRouter = require('./routes/users');
 
+const bodyParser = require('body-parser'); //esto quiza fue que no respondia al post
+
 var app = express();
 app.use(express.static('public'));
 

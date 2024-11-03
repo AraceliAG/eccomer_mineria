@@ -20,3 +20,43 @@
     object-fit: contain; /* Mantener proporciones de la imagen */
   }
   
+
+
+  .product-box {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .product-box img {
+    max-height: 150px;
+    width: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .product-box h5 {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  
+  .product-box h3 {
+    font-size: 1.2rem;
+    color: #007bff;
+    margin: 5px 0;
+  }
+  
+  .product-box form {
+    width: 100%;
+  }
+  
+  .product-box .btn {
+    width: 100%;
+    margin-top: auto;
+  }
+  

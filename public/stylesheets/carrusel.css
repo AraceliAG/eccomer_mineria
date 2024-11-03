@@ -4,3 +4,15 @@
     height: auto; /* Mantiene la relación de aspecto */
     margin: auto;
 }
+/* Estilo para los botones de navegación del carrusel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: black; /* Cambia el color a negro */
+  width: 20px; /* Ajusta el ancho de la flecha */
+  height: 20px; /* Ajusta la altura de la flecha */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 30px; /* Reduce el ancho del área de clic de los botones */
+}

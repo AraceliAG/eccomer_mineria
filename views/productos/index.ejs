@@ -66,6 +66,12 @@
                 <img src="<%= producto.imagen %>" class="d-block w-100" alt="<%= producto.nombre %>">
                 <h5><%= producto.nombre %></h5>
                 <h3>$<%= producto.precio %></h3> <!-- Añadir símbolo de moneda -->
+
+                <form action="" method="post">
+                  <input type="hidden" name="productoId" value="<%= producto.idproductos %>">
+                  <button type="submit" class="btn btn-primary mt-2">Seleccionar</button>
+                </form>
+
               </div>
             </div>
           <% }) %>
@@ -80,6 +86,12 @@
                   <img src="<%= producto.imagen %>" class="d-block w-100" alt="<%= producto.nombre %>">
                   <h5><%= producto.nombre %></h5>
                   <h3>$<%= producto.precio %></h3> <!-- Añadir símbolo de moneda -->
+
+
+                  <form action="" method="post">
+                    <input type="hidden" name="productoId" value="<%= producto.idproductos %>">
+                    <button type="submit" class="btn btn-primary mt-2">Seleccionar</button>
+                  </form>
                 </div>
               </div>
             <% }) %>
