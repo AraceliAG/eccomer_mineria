@@ -15,3 +15,7 @@ npm start #INSTALACIÓN DE NUESTRO PROYECTO
 #MODULO PAL SQL 
 
 npm install sql
+
+
+#PARA GRAFICAS
+npm install chart.js
