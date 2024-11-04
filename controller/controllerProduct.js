@@ -3,7 +3,6 @@ var producto = require('../model/querys')
 module.exports={
 
 
-
     index:function(req, res){ //VISUALIZACIÓN DE NUSTRO HOME PRINCIPAL
         //PARA REALIZAR MÁS DE UNA CONSULTAS SE TIENEN QUE AGREGAR COMO SE VE AQUI PRODUCTO>PRODUCTO>PRODUCTO Y SE MANDAN
 
@@ -11,7 +10,13 @@ module.exports={
 
         producto.obtener2(con, function(err, datos2){
 
-        res.render('index', {title:'Aplication', productos:datos, productos2:datos2}) //PURO VER
+        producto.veterinaria(con, function(err, datos3){
+
+        res.render('index', {title:'Aplication', productos:datos, productos2:datos2, veterinaria:datos3}) //PURO VER
+
+        })
+
+        
         })
     })
 
@@ -25,9 +30,6 @@ module.exports={
         // Guarda productoId en la sesión como un entero
         req.session.productoId = parseInt(data.productoId, 10);
         res.redirect("descripcion")
-        
-            
-            
         
     },
 
