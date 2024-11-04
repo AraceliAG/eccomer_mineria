@@ -243,5 +243,137 @@
 
 
 
+<!-- SALUD -->
+
+
+<div class="container mt-5">
+    <h3>SALUD</h3>
+    <div id="saludCarousel" class="carousel slide" data-bs-ride="false">
+        <!-- Indicadores -->
+        <ol class="carousel-indicators">
+            <% salud.forEach((producto, index) => { %>
+                <li data-bs-target="#saludCarousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+            <% }) %>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <% salud.slice(0, 4).forEach((producto) => { %>
+                        <div class="col text-center">
+                            <div class="product-box">
+                                <img src="<%= producto.imagen %>" class="img-fluid" alt="<%= producto.nombre %>" style="max-height: 200px; object-fit: contain;">
+                                <h5><%= producto.nombre %></h5>
+                                <h3>$<%= producto.precio %></h3>
+                                <form action="" method="post">
+                                    <input type="hidden" name="productoId" value="<%= producto.idproductos %>">
+                                    <button type="submit" class="btn btn-primary mt-2">Seleccionar</button>
+                                </form>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <!-- PARA MOSTRAR LA INFO CORRESPODIENTE UTILIZAMOS UN FOR PARA RECORRER LOS PRODUCTOS CORRESPONDIENTES -->
+            <% for (let i = 4; i < salud.length; i += 4) { %> 
+                <div class="carousel-item">
+                    <div class="row">
+                        <% salud.slice(i, i + 4).forEach((producto) => { %>
+                            <div class="col text-center">
+                                <div class="product-box">
+                                    <img src="<%= producto.imagen %>" class="img-fluid" alt="<%= producto.nombre %>" style="max-height: 200px; object-fit: contain;">
+                                    <h5><%= producto.nombre %></h5>
+                                    <h3>$<%= producto.precio %></h3>
+                                    <!-- AQUI MANDAMOS EL PRODUCTO PARA VER LA INFO METODO POST -->
+                                    <form action="" method="post"> 
+                                        <input type="hidden" name="productoId" value="<%= producto.idproductos %>">
+                                        <button type="submit" class="btn btn-primary mt-2">Seleccionar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+                <!-- CERRAMOS POR ACA, PARA LLAMAR LOS DATOS SOLO ES CON EL ITERADOR.NOMBREDELATRIBUTO -->
+            <% } %> 
+        </div>
+
+        <a class="carousel-control-prev" href="#saludCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#saludCarousel" role="button" data-bs-slide="next" style="background-color: #007bff; color: #fff;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
+</div>
+
+<!-- ALIMENTO -->
+<div class="container mt-5">
+    <h3>ALIMENTO</h3>
+    <div id="alimentoCarousel" class="carousel slide" data-bs-ride="false">
+        <!-- Indicadores -->
+        <ol class="carousel-indicators">
+            <% alimento.forEach((producto, index) => { %>
+                <li data-bs-target="#alimentoCarousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+            <% }) %>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <% alimento.slice(0, 4).forEach((producto) => { %>
+                        <div class="col text-center">
+                            <div class="product-box">
+                                <img src="<%= producto.imagen %>" class="img-fluid" alt="<%= producto.nombre %>" style="max-height: 200px; object-fit: contain;">
+                                <h5><%= producto.nombre %></h5>
+                                <h3>$<%= producto.precio %></h3>
+                                <form action="" method="post">
+                                    <input type="hidden" name="productoId" value="<%= producto.idproductos %>">
+                                    <button type="submit" class="btn btn-primary mt-2">Seleccionar</button>
+                                </form>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <!-- PARA MOSTRAR LA INFO CORRESPODIENTE UTILIZAMOS UN FOR PARA RECORRER LOS PRODUCTOS CORRESPONDIENTES -->
+            <% for (let i = 4; i < alimento.length; i += 4) { %> 
+                <div class="carousel-item">
+                    <div class="row">
+                        <% alimento.slice(i, i + 4).forEach((producto) => { %>
+                            <div class="col text-center">
+                                <div class="product-box">
+                                    <img src="<%= producto.imagen %>" class="img-fluid" alt="<%= producto.nombre %>" style="max-height: 200px; object-fit: contain;">
+                                    <h5><%= producto.nombre %></h5>
+                                    <h3>$<%= producto.precio %></h3>
+                                    <!-- AQUI MANDAMOS EL PRODUCTO PARA VER LA INFO METODO POST -->
+                                    <form action="" method="post"> 
+                                        <input type="hidden" name="productoId" value="<%= producto.idproductos %>">
+                                        <button type="submit" class="btn btn-primary mt-2">Seleccionar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+                <!-- CERRAMOS POR ACA, PARA LLAMAR LOS DATOS SOLO ES CON EL ITERADOR.NOMBREDELATRIBUTO -->
+            <% } %> 
+        </div>
+
+        <a class="carousel-control-prev" href="#alimentoCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#alimentoCarousel" role="button" data-bs-slide="next" style="background-color: #007bff; color: #fff;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
+</div>
+
+
+
 </body>
 </html>

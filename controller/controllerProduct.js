@@ -11,11 +11,20 @@ module.exports={
         producto.obtener2(con, function(err, datos2){
 
         producto.veterinaria(con, function(err, datos3){
+            
+        producto.salud(con, function(err, datos4){
 
-        res.render('index', {title:'Aplication', productos:datos, productos2:datos2, veterinaria:datos3}) //PURO VER
+        producto.alimento(con, function(err, datos5){
+            res.render('index', {title:'Aplication', productos:datos, productos2:datos2, veterinaria:datos3, salud:datos4, alimento:datos5}) //PURO VER
 
         })
 
+        
+        })
+        
+        })
+        
+       
         
         })
     })
