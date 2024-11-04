@@ -20,11 +20,13 @@ module.exports = {
     veterinaria:function(conexion, funcion){
         conexion.query("SELECT idproductos, nombre, departamento, precio, imagen, descripcion FROM productos where departamento='veterinaria'", funcion);
     },
-
+ //salud
     salud:function(conexion, funcion){
         conexion.query("SELECT idproductos, nombre, departamento, precio, imagen, descripcion FROM productos where departamento='salud'", funcion);
     },
-
-
+ //alimento
+ alimento:function(conexion, funcion){
+    conexion.query("SELECT idproductos, nombre, departamento, precio, imagen, descripcion FROM productos where departamento='alimentos'", funcion);
+},
 
 }

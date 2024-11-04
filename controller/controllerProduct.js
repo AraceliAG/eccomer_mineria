@@ -14,12 +14,17 @@ module.exports={
             
         producto.salud(con, function(err, datos4){
 
-         res.render('index', {title:'Aplication', productos:datos, productos2:datos2, veterinaria:datos3, salud:datos4}) //PURO VER
-        })
-        
-        })
-        
+        producto.alimento(con, function(err, datos5){
+            res.render('index', {title:'Aplication', productos:datos, productos2:datos2, veterinaria:datos3, salud:datos4, alimento:datos5}) //PURO VER
 
+        })
+
+        
+        })
+        
+        })
+        
+       
         
         })
     })
