@@ -16,3 +16,16 @@
 .carousel-control-next {
   width: 30px; /* Reduce el ancho del área de clic de los botones */
 }
+
+/* Cambiar el color de fondo */
+.btn-custom {
+  background-color: #ff5733; /* Elige el color de fondo que prefieras */
+  color: #ffffff; /* Color del texto */
+  border: none; /* Si no deseas borde */
+}
+
+/* Cambiar el color cuando el usuario pasa el mouse por encima */
+.btn-custom:hover {
+  background-color: #ff0000; /* Cambiar el color de fondo al pasar el mouse */
+  color: #ffffff; /* Asegúrate de mantener el color del texto */
+}

@@ -1,23 +1,14 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+.navbar-custom {
+    background: #FF416C;
+	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+    
+    color: rgb(255, 255, 255);
+    
 
-body {
-    font-family: Arial, sans-serif;
-}
-
-
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #bd70e66d;
-    border-bottom: 1px solid #585454;
-}
+    
+  }
+  
 
 .logo img {
     height: 45px;
@@ -63,5 +54,5 @@ header {
 }
 
 .navbar-nav .nav-link:hover {
-    color: #9aa0a6;
+    color: #ffffff;
 }
