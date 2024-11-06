@@ -3,6 +3,18 @@
 INTERACTUAR CON LOS REGISTROS*/
 
 module.exports = {
+    //INICIO DE SESION
+
+    inicioSesion:function(conexion, correo, contrasenia, funcion){
+
+        conexion.query("Select * from usuario where correo=? and contrasenia=?",[correo.correo,contrasenia.contrasenia], funcion );
+
+    },
+
+
+
+
+
     obtener:function(conexion, funcion){
         conexion.query("SELECT idproductos,nombre, imagen,precio FROM productos WHERE departamento='Higiene Personal'", funcion);
     },
@@ -28,5 +40,11 @@ module.exports = {
  alimento:function(conexion, funcion){
     conexion.query("SELECT idproductos, nombre, departamento, precio, imagen, descripcion FROM productos where departamento='alimentos'", funcion);
 },
+
+
+
+
+
+
 
 }

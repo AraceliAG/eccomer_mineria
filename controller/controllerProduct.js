@@ -2,10 +2,31 @@ var con = require('../config/conection')
 var producto = require('../model/querys')
 module.exports={
 
+    login:function(req, res){
+        
+
+        res.render('login')
+    },
+
+    inicio:function(req,res){
+        const inicio = req.body
+        console.log(req.body)
+
+        producto.inicioSesion(con,inicio.correo, inicio.contrasenia, function(err,datos){
+
+            console.log("correo dentro de funcion",inicio.correo)
+            
+            if (!inicio.correo || !inicio.contrasenia || inicio.correo.trim().length === 0 || inicio.contrasenia.trim().length === 0) {
+                return res.status(401).send('Correo o contraseña incorrectos');
+            }
+            res.redirect('index')
+        } )
+       
+    },
+
 
     index:function(req, res){ //VISUALIZACIÓN DE NUSTRO HOME PRINCIPAL
         //PARA REALIZAR MÁS DE UNA CONSULTAS SE TIENEN QUE AGREGAR COMO SE VE AQUI PRODUCTO>PRODUCTO>PRODUCTO Y SE MANDAN
-
         producto.obtener(con, function(err, datos){ 
 
         producto.obtener2(con, function(err, datos2){
