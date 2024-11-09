@@ -22,7 +22,7 @@ module.exports = {
     },
 
     descripcionn:function(conexion, id, funcion){
-        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where id_productos=?",[id.idproductos],funcion);
+        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where id_productos=?",[id.id_productos],funcion);
     },
     
 
