@@ -26,6 +26,12 @@ module.exports={
             if (!datos.length) { //SI NO SE ENCUENTRAN LOS DATOS REGRESA EL MENSAJE
                 return res.status(401).send('Correo o contraseña incorrectos');
             }
+
+            
+
+            const datosUsuario = datos[0];
+            console.log("se va enviar este dato: ", datosUsuario)
+            req.session.usuario = datosUsuario;
             
             //SI EXISTE REDIREDIGE AL INDEX
             res.redirect('index');
@@ -36,6 +42,9 @@ module.exports={
 
     index:function(req, res){ //VISUALIZACIÓN DE NUSTRO HOME PRINCIPAL
         //PARA REALIZAR MÁS DE UNA CONSULTAS SE TIENEN QUE AGREGAR COMO SE VE AQUI PRODUCTO>PRODUCTO>PRODUCTO Y SE MANDAN
+        const usuario = req.session.usuario;
+        console.log("hola acabo de llegar xD: ", usuario  )
+        
         producto.obtener(con, function(err, datos){ 
 
         producto.obtener2(con, function(err, datos2){

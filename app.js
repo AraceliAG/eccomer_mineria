@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 const bodyParser = require('body-parser'); //esto quiza fue que no respondia al post
 
 
-var session = require('express-session');//LO ACABO DE PONER
+var session = require('express-session');//LO ACABO DE PONER PARA DATOS TEMPORALES
 
 var app = express();
 app.use(express.static('public'));
