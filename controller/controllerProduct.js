@@ -105,7 +105,18 @@ module.exports={
     verFavoritos:function(req, res){
         const usuario = req.session.usuario;
         console.log("hola acabo de llegar xD favoritos: ", usuario  )
-        res.render("favoritos")
+
+        const id = usuario[0]
+        console.log("este es el id ", usuario.id_usuario)
+        producto.verFav(con, usuario.id_usuario, function(err,datos){
+
+            console.log(datos)
+            res.render("favoritos", {productos:datos})
+
+        })
+
+        
+        
     }, 
 
     agregar_fav:function(req, res){
