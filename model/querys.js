@@ -30,15 +30,15 @@ module.exports = {
 
     //VETERINARIA
     veterinaria:function(conexion, funcion){
-        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where departamento='veterinaria'", funcion);
+        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where categoria='veterinaria'", funcion);
     },
  //salud
     salud:function(conexion, funcion){
-        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where departamento='salud'", funcion);
+        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where categoria='salud'", funcion);
     },
  //alimento
  alimento:function(conexion, funcion){
-    conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where departamento='alimentos'", funcion);
+    conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where categoria='alimentos'", funcion);
 },
 
 
