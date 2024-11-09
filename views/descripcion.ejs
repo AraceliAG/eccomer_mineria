@@ -29,14 +29,14 @@
     </div>
 </div>
 
-<!-- Gráfica de Históricos -->
+<!-- GRAFICO DE LOS HISTORICOS-->
 <div class="container">
     <h3>Históricos</h3>
     <canvas id="myChart" width="400" height="200"></canvas>
     <script src="/javascripts/toallas_humedas.js"></script>
 </div>
 
-<!-- Modal de Confirmación -->
+<!-- MODALES PARA CONFIRMAR-->
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -64,7 +64,7 @@
         $('#confirmModal').modal('show');
     }
 
-    // Event listeners para los botones
+    // EVENTO DE LOS BOTONES
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.btn-agregar-carrito').forEach(button => {
             button.addEventListener('click', function() {
