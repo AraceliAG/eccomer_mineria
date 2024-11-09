@@ -1,35 +1,42 @@
 <%- include('./layout/cabecera.ejs') %>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th></th>
-            <th>Producto</th>
-            <th>Imagen</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% for(let i = 0; i < productos.length; i++) { %>
-            <tr>
-                <!-- Columna para el índice del producto -->
-                <td scope="row"><%= i + 1 %></td>
-                
-                <!-- Columna para el nombre del producto -->
-                <td><%= productos[i].nombre %></td>
-                
-                <!-- Columna para la imagen del producto -->
-                <td>
-                    <% if (productos[i].imagen) { %>
-                        <img src="<%= productos[i].imagen %>" alt="<%= productos[i].nombre %>" style="width: 100px; height: auto;">
-                    <% } else { %>
-                        <span>No hay imagen</span>
-                    <% } %>
-                </td>
+<div class="container_fav">
+    <h1>Favoritos</h1>
+</div>
 
-                <td>
-                    <button type="button" class="btn btn-primary">Comprar</button>
-                </td>
+<div class="containerFavoritos">
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
-        <% } %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <% for(let i = 0; i < productos.length; i++) { %>
+                <tr>
+                    
+                    
+                    <!-- Columna para el nombre del producto -->
+                    <td><%= productos[i].nombre %></td>
+                    
+                    <!-- Columna para la imagen del producto -->
+                    <td>
+                        <% if (productos[i].imagen) { %>
+                            <img src="<%= productos[i].imagen %>" alt="<%= productos[i].nombre %>" style="width: 250px; height: auto; border-radius: 8px;">
+                        <% } else { %>
+                            <span>No hay imagen</span>
+                        <% } %>
+                    </td>
+
+                    <!-- Columna para el botón "Comprar" -->
+                    <td>
+                        <button type="button" class="btn btn-primary">Comprar</button>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
