@@ -8,21 +8,30 @@ module.exports={
         res.render('login')
     },
 
-    inicio:function(req,res){
-        const inicio = req.body
-        console.log(req.body)
-
-        producto.inicioSesion(con,inicio.correo, inicio.contrasenia, function(err,datos){
-
-            console.log("correo dentro de funcion",inicio.correo)
+    inicio:function(req, res) {
+        const inicio = req.body;
+        console.log(req.body);
+    
+        producto.inicioSesion(con, inicio.correo, inicio.contrasenia, function(err, datos) {
+    
+            console.log("datos: ", datos);
+            console.log("correo dentro de la función:", inicio.correo);
+            console.log("contraseña dentro de la función:", inicio.contrasenia);
             
-            if (!inicio.correo || !inicio.contrasenia || inicio.correo.trim().length === 0 || inicio.contrasenia.trim().length === 0) {
+            if (err) {
+                console.error("Error en la consulta: ", err);
+                return res.status(500).send('Error en el servidor');
+            }
+            
+            if (!datos.length) { //SI NO SE ENCUENTRAN LOS DATOS REGRESA EL MENSAJE
                 return res.status(401).send('Correo o contraseña incorrectos');
             }
-            res.redirect('index')
-        } )
-       
+            
+            //SI EXISTE REDIREDIGE AL INDEX
+            res.redirect('index');
+        });
     },
+    
 
 
     index:function(req, res){ //VISUALIZACIÓN DE NUSTRO HOME PRINCIPAL
@@ -79,6 +88,12 @@ module.exports={
         })
             
 
+    },
+
+    verFavoritos:function(req, res){
+
+
+        res.render("favoritos")
     }
     
 

@@ -7,7 +7,7 @@ module.exports = {
 
     inicioSesion:function(conexion, correo, contrasenia, funcion){
 
-        conexion.query("Select * from usuario where correo=? and contrasenia=?",[correo.correo,contrasenia.contrasenia], funcion );
+        conexion.query("select * from usuario where correo=? and contrasenia=?",[correo,contrasenia], funcion );
 
     },
 

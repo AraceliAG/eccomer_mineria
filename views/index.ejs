@@ -45,6 +45,44 @@
 
 
 
+<!-- RECOMENDACIONES RELACIONADO A MINERÍA DE DATOS -->
+<div class="container mt-5">
+    <h3>RECOMENDACIONES BASADAS EN TI</h3>
+    <div id="recomendacionCareCarousel" class="carousel slide" data-bs-ride="false">
+        <!-- Indicadores -->
+        <ol class="carousel-indicators">
+            <% productos.forEach((producto, index) => { %>
+                <li data-bs-target="#recomendacionCareCarousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+            <% }) %>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                </div>
+            </div>
+            
+                <div class="carousel-item">
+                    <div class="row">
+                        
+                    </div>
+                </div>
+          
+        </div>
+
+        <a class="carousel-control-prev" href="#recomendacionCareCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#recomendacionCareCarousel" role="button" data-bs-slide="next" style="background-color: #007bff; color: #fff;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
+</div>
+
+
+
 <!-- CUIDADO PERSONAL -->
 <div class="container mt-5">
     <h3>CUIDADO PERSONAL</h3>
