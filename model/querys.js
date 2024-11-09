@@ -16,29 +16,29 @@ module.exports = {
 
 
     obtener:function(conexion, funcion){
-        conexion.query("SELECT idproductos,nombre, imagen,precio FROM productos WHERE departamento='Higiene Personal'", funcion);
+        conexion.query("SELECT id_productos,nombre, imagen,precio FROM productos WHERE categoria='Higiene Personal'", funcion);
     },
 
     obtener2:function(conexion, funcion){
-        conexion.query("SELECT idproductos,nombre, imagen,precio FROM productos WHERE departamento='Videojuegos'", funcion);
+        conexion.query("SELECT id_productos,nombre, imagen,precio FROM productos WHERE categoria='Videojuegos'", funcion);
     },
 
     descripcionn:function(conexion, id, funcion){
-        conexion.query("SELECT idproductos, nombre, departamento, precio, imagen, descripcion FROM productos where idproductos=?",[id.idproductos],funcion);
+        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where idproductos=?",[id.idproductos],funcion);
     },
     
 
     //VETERINARIA
     veterinaria:function(conexion, funcion){
-        conexion.query("SELECT idproductos, nombre, departamento, precio, imagen, descripcion FROM productos where departamento='veterinaria'", funcion);
+        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where departamento='veterinaria'", funcion);
     },
  //salud
     salud:function(conexion, funcion){
-        conexion.query("SELECT idproductos, nombre, departamento, precio, imagen, descripcion FROM productos where departamento='salud'", funcion);
+        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where departamento='salud'", funcion);
     },
  //alimento
  alimento:function(conexion, funcion){
-    conexion.query("SELECT idproductos, nombre, departamento, precio, imagen, descripcion FROM productos where departamento='alimentos'", funcion);
+    conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where departamento='alimentos'", funcion);
 },
 
 
