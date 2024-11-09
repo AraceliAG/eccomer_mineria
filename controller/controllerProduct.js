@@ -70,7 +70,7 @@ module.exports={
 
         console.log("Datos recuperados: ", productoId);
 
-        producto.descripcionn(con, { idproductos: productoId }, function(err, datos) {
+        producto.descripcionn(con, { id_productos: productoId }, function(err, datos) {
 
             console.log("datos: ", datos)
 

@@ -13,8 +13,6 @@ module.exports = {
 
 
 
-
-
     obtener:function(conexion, funcion){
         conexion.query("SELECT id_productos,nombre, imagen,precio FROM productos WHERE categoria='Higiene Personal'", funcion);
     },
@@ -24,7 +22,7 @@ module.exports = {
     },
 
     descripcionn:function(conexion, id, funcion){
-        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where idproductos=?",[id.idproductos],funcion);
+        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where id_productos=?",[id.idproductos],funcion);
     },
     
 
