@@ -36,9 +36,3 @@
     border-radius: 8px;
 }
 
-/* Botón de compra al 100% de ancho */
-.btn-primary {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-}
