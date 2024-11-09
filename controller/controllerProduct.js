@@ -72,8 +72,10 @@ module.exports={
     
 
     seleccion:function(req, res){ //PARA VER NUESTRA VISTA DE DESCRIP PRODUCTO DE SELECCIÓN
+        const usuario = req.session.usuario;
         
         const data = req.body
+        console.log("hola acabo de llegar xD descripsion: ", usuario  )
         console.log("envio de: ", data)
         // Guarda productoId en la sesión como un entero
         req.session.productoId = parseInt(data.productoId, 10);
@@ -83,6 +85,7 @@ module.exports={
 
     descrip:function(req,res){
         // RECUPETRAMOS LOS DATOS
+        
         const productoId = req.session.productoId;
 
 
