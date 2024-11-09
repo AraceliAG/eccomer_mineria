@@ -19,3 +19,9 @@ npm install sql
 
 #PARA GRAFICAS
 npm install chart.js
+
+--------------------------------------------------------------------------------------------
+#ENCRIPTACION
+
+npm install bcrypt
+
