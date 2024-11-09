@@ -103,9 +103,14 @@ module.exports={
     },
 
     verFavoritos:function(req, res){
-
-
+        const usuario = req.session.usuario;
+        console.log("hola acabo de llegar xD favoritos: ", usuario  )
         res.render("favoritos")
+    }, 
+
+    agregar_fav:function(req, res){
+
+        res.render("descripcion")
     }
     
 
