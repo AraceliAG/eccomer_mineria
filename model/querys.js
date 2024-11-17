@@ -42,7 +42,7 @@ module.exports = {
 
 
 
-// -- VER FAVORITOS DEL USUARIO
+// --VER FAVORITOS DEL USUARIO
 
 verFav:function(conexion, id_usuario, funcion){
 
