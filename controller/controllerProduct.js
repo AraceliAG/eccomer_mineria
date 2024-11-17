@@ -2,14 +2,16 @@ var con = require('../config/conection')
 var producto = require('../model/querys')
 module.exports={
 
+
+    //- FUNCION PARA MOSTRAR EL LOGIN PRINCIAPAL 
     login:function(req, res){
         
-
         res.render('login')
     },
 
+    //- VERIFICACION SI EXISTE EL USUARIO
     inicio:function(req, res) {
-        const inicio = req.body;
+        const inicio = req.body; //*ESTO ES EL DATO QUE SE MANDA DEL FORMULARIO DE LA VISTA
         console.log(req.body);
     
         producto.inicioSesion(con, inicio.correo, inicio.contrasenia, function(err, datos) {
@@ -39,6 +41,7 @@ module.exports={
     },
     
 
+    //- FUNCION PARA MOSTRAR LOS PRODUCTOS POR DEPARTAMENTO EN EL INICIO
 
     index:function(req, res){ //VISUALIZACIÓN DE NUSTRO HOME PRINCIPAL
         //PARA REALIZAR MÁS DE UNA CONSULTAS SE TIENEN QUE AGREGAR COMO SE VE AQUI PRODUCTO>PRODUCTO>PRODUCTO Y SE MANDAN
@@ -71,7 +74,8 @@ module.exports={
     },
     
 
-    seleccion:function(req, res){ //PARA VER NUESTRA VISTA DE DESCRIP PRODUCTO DE SELECCIÓN
+    //-PARA VER NUESTRA VISTA DE DESCRIP PRODUCTO AL MOMENTO DE SELECCIONAR UN PRODUCTO EN EL INICIO
+    seleccion:function(req, res){ 
         const usuario = req.session.usuario;
         
         const data = req.body
@@ -83,9 +87,9 @@ module.exports={
         
     },
 
+    //-AQUI SE MUESTRA LOS DATOS DEL PRODUCTO SELECCIONADO 
     descrip:function(req,res){
-        // RECUPETRAMOS LOS DATOS
-        
+        //* RECUPETRAMOS LOS DATOS
         const productoId = req.session.productoId;
 
 
@@ -102,6 +106,7 @@ module.exports={
 
     },
 
+    // - AQUI ES PARA VER LOS FAVORITOS DEL USAURIO 
     verFavoritos:function(req, res){
         const usuario = req.session.usuario;
         console.log("hola acabo de llegar xD favoritos: ", usuario  )
@@ -119,11 +124,14 @@ module.exports={
         
     }, 
 
+    // - AGREGAR FAVORITOS
     agregar_fav:function(req, res){
 
         res.render("descripcion")
     },
 
+
+    // - VER CARRITO PARA CPNFIRMAR COMPRA
     ver_carrito:function(req, res){
 
         res.render("carrito")

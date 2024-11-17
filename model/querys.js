@@ -3,46 +3,42 @@
 INTERACTUAR CON LOS REGISTROS*/
 
 module.exports = {
-    //INICIO DE SESION
 
+    //-INICIO DE SESION
     inicioSesion:function(conexion, correo, contrasenia, funcion){
-
         conexion.query("select id_usuario, nombre from usuario where correo=? and contrasenia=?",[correo,contrasenia], funcion );
-
     },
 
-
-
+    // - APARTADO PARA MOSTRAR LOS ARTICULOS EN EL INICIO 
+      //*alimento
     obtener:function(conexion, funcion){
         conexion.query("SELECT id_productos,nombre, imagen,precio FROM productos WHERE categoria='Higiene Personal'", funcion);
     },
-
+      //*alimento
     obtener2:function(conexion, funcion){
         conexion.query("SELECT id_productos,nombre, imagen,precio FROM productos WHERE categoria='Videojuegos'", funcion);
     },
-
-    descripcionn:function(conexion, id, funcion){
-        conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where id_productos=?",[id.id_productos],funcion);
-    },
-    
-
-    //VETERINARIA
+    //*VETERINARIA
     veterinaria:function(conexion, funcion){
         conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where categoria='veterinaria'", funcion);
     },
- //salud
+ //*salud
     salud:function(conexion, funcion){
         conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where categoria='salud'", funcion);
     },
- //alimento
+ //*alimento
  alimento:function(conexion, funcion){
     conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where categoria='alimentos'", funcion);
 },
+  
+
+//-AQUI AL MOMENTO DE SELECCIONAR UN PRODUCTO CREA LA CONSULTA PARA MOSTRAR DETALLES DEL PRODUCTO
+descripcionn:function(conexion, id, funcion){
+    conexion.query("SELECT id_productos, nombre, categoria, precio, imagen, descripcion FROM productos where id_productos=?",[id.id_productos],funcion);
+},
 
 
-
-
-// * VER FAVORITOS DEL USUARIO
+//-VER FAVORITOS DEL USUARIO
 
 verFav:function(conexion, id_usuario, funcion){
 
