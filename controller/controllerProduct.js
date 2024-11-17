@@ -125,14 +125,20 @@ module.exports={
     }, 
 
     // - AGREGAR FAVORITOS
-    agregar_fav:function(req, res){
-
+    agregar_favorito:function(req, res){
         const usuario = req.session.usuario;
         console.log("hola acabo de llegar para agregar favoritos: ", usuario.id_usuario  )
         const idproducto = req.body.idproductos;
         console.log('ID PRODUCTO DESDE FUNCION agregar_fav: ', idproducto)
+        producto.agregar_fav(con, usuario.id_usuario, idproducto, function(err){
+
+            res.redirect("descripcion")
+
+        })
+
         
-        res.redirect("descripcion")
+        
+        
     },
 
 

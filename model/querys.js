@@ -52,12 +52,15 @@ verFav:function(conexion, id_usuario, funcion){
 agregar_fav:function(conexion, id_usuario, id_productos){
     conexion.query("insert into favoritos (id_usuario, id_productos) values(?,?)",[id_usuario,id_productos])
 
-}
+},
 // -----------------------------------------------------------------------------------------------------------------
 
 // -VER MI CARRITO PARA CONFIRMACION DE COMPRAS
 
+verCar:function(conexion, id_usuario, funcion){
 
+    conexion.query("select p.nombre, p.imagen from favoritos as f join usuario as u on u.id_usuario = f.id_usuario join productos as p on p.id_productos = f.id_productos where u.id_usuario=?",[id_usuario],funcion)
+}
 
 
 
