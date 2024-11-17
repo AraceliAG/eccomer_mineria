@@ -41,9 +41,9 @@ module.exports={
     },
     
 
-    //- FUNCION PARA MOSTRAR LOS PRODUCTOS POR DEPARTAMENTO EN EL INICIO
+    //- FUNCION PARA MOSTRAR LOS PRODUCTOS POR DEPARTAMENTO EN EL HOME PRINCIPAL
 
-    index:function(req, res){ //VISUALIZACIÓN DE NUSTRO HOME PRINCIPAL
+    index:function(req, res){ 
         //PARA REALIZAR MÁS DE UNA CONSULTAS SE TIENEN QUE AGREGAR COMO SE VE AQUI PRODUCTO>PRODUCTO>PRODUCTO Y SE MANDAN
         const usuario = req.session.usuario;
         console.log("hola acabo de llegar xD: ", usuario  )
@@ -127,7 +127,12 @@ module.exports={
     // - AGREGAR FAVORITOS
     agregar_fav:function(req, res){
 
-        res.render("descripcion")
+        const usuario = req.session.usuario;
+        console.log("hola acabo de llegar para agregar favoritos: ", usuario.id_usuario  )
+        const idproducto = req.body.idproductos;
+        console.log('ID PRODUCTO DESDE FUNCION agregar_fav: ', idproducto)
+        
+        res.redirect("descripcion")
     },
 
 
