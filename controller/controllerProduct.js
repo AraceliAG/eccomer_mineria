@@ -122,6 +122,11 @@ module.exports={
     agregar_fav:function(req, res){
 
         res.render("descripcion")
+    },
+
+    ver_carrito:function(req, res){
+
+        res.render("carrito")
     }
     
 

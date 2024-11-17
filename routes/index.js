@@ -8,6 +8,6 @@ router.get('/index', controllerMain.index);
 router.post('/index', controllerMain.seleccion);
 router.get('/descripcion',controllerMain.descrip);
 router.get('/favoritos',controllerMain.verFavoritos);
-
+router.get('/carrito',controllerMain.ver_carrito);
 
 module.exports = router;
