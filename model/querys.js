@@ -57,11 +57,28 @@ agregar_fav:function(conexion, id_usuario, id_productos){
 
 // -VER MI CARRITO PARA CONFIRMACION DE COMPRAS
 
-verCar:function(conexion, id_usuario, funcion){
+insertarCarrito: function (conexion, id_usuario, callback) {
+    const query = "INSERT INTO carrito (id_usuario) VALUES (?)";
+    conexion.query(query, [id_usuario], (err, result) => {
+        if (err) {
+            console.error("Error al insertar en carrito:", err); // Depuración
+            return callback(err); // Devuelve el error al callback
+        }
+        console.log("Resultado de insertarCarrito:", result); // Depuración
+        callback(null, result); // Devuelve el resultado al callback
+    });
+},
 
-    conexion.query("select p.nombre, p.imagen from favoritos as f join usuario as u on u.id_usuario = f.id_usuario join productos as p on p.id_productos = f.id_productos where u.id_usuario=?",[id_usuario],funcion)
+
+insertarCarritoProducto: function(conexion, id_carrito, id_productos, callback) {
+    const query = "INSERT INTO carrito_producto (id_carrito, id_productos) VALUES (?, ?)";
+    conexion.query(query, [id_carrito, id_productos], (err, result) => {
+        if (err) {
+            return callback(err); // Si hay un error, lo pasamos al callback
+        }
+        callback(null, result); // Si no hay error, pasamos el resultado al callback
+    });
 }
-
 
 
 

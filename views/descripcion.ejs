@@ -17,13 +17,13 @@
                                 <div class="d-flex">
 
                                     <!--*AGREGAR A FAVORITOS -->
-                                    <form action="" method="post"">
+                                    <form action="/descripcion/agregar-favorito" method="post"">
                                         <input type="hidden" name="idproductos" value="<%= productos[producto].id_productos %>">
                                         <button type="submit" class="btn btn-secondary">Agregar a Favoritos</button>
                                     </form>
 
                                     <!--*AGREGAR A FAVORITOS -->
-                                    <form action="" method=""">
+                                    <form action="/descripcion/agregar-carrito" method="post"">
                                         <input type="hidden" name="id_productos_C" value="<%= productos[producto].id_productos %>">
                                         <button type="submit" class="btn btn-secondary">Agregar a Carrito</button>
                                     </form>

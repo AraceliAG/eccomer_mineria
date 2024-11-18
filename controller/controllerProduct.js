@@ -142,11 +142,92 @@ module.exports={
     },
 
 
-    // - VER CARRITO PARA CPNFIRMAR COMPRA
-    ver_carrito:function(req, res){
+    // - AGREGAR FAVORITOS
+agregar_favorito: function (req, res) {
+    const usuario = req.session.usuario;
+    const idProducto = req.body.idproductos;
 
-        res.render("carrito")
-    }
+    console.log("Usuario para agregar favoritos:", usuario.id_usuario);
+    console.log("Producto para agregar favoritos:", idProducto);
+
+    producto.agregar_fav(con, usuario.id_usuario, idProducto, (err) => {
+        if (err) {
+            console.error("Error al agregar favorito:", err);
+            return res.status(500).send("Error al agregar favorito");
+        }
+
+        res.redirect("descripcion");
+    });
+},
+
+agregarAlCarrito: function (req, res) {
+    const usuario = req.session.usuario; // Usuario autenticado
+    const idUsuario = usuario.id_usuario;
+    const idProducto = req.body.id_productos_C; // Producto a agregar
+
+    console.log("Usuario para carrito:", idUsuario);
+    console.log("Producto para carrito:", idProducto);
+
+    // Usar la conexión global directamente
+    con.beginTransaction((err) => {
+        if (err) {
+            console.error("Error al iniciar transacción:", err);
+            return res.status(500).send("Error al iniciar transacción");
+        }
+
+        // Insertar en la tabla carrito
+        producto.insertarCarrito(con, idUsuario, (err, result) => {
+            if (err) {
+                console.error("Error al insertar en carrito:", err);
+                return con.rollback(() => {
+                    res.status(500).send("Error al insertar en carrito");
+                });
+            }
+
+            console.log("Resultado de insertarCarrito:", result); // Depuración
+            const idCarrito = result.insertId; // ID del carrito recién creado
+
+            if (!idCarrito) {
+                console.error("No se obtuvo un ID válido del carrito.");
+                return con.rollback(() => {
+                    res.status(500).send("No se pudo obtener el ID del carrito");
+                });
+            }
+
+            console.log("ID del carrito insertado:", idCarrito); // Depuración
+
+            // Insertar en la tabla carrito_producto
+            producto.insertarCarritoProducto(con, idCarrito, idProducto, (err) => {
+                if (err) {
+                    console.error("Error al insertar en carrito_producto:", err);
+                    return con.rollback(() => {
+                        res.status(500).send("Error al insertar en carrito_producto");
+                    });
+                }
+
+                // Confirmar la transacción
+                con.commit((err) => {
+                    if (err) {
+                        console.error("Error al confirmar transacción:", err);
+                        return con.rollback(() => {
+                            res.status(500).send("Error al confirmar transacción");
+                        });
+                    }
+
+                    console.log("Producto agregado al carrito con éxito");
+                    res.render("carrito");
+                });
+            });
+        });
+    });
+},
+
+
+
+verCarrito:function(req, res){
+
+    res.render("carrito")
+}
     
 
     
