@@ -205,7 +205,6 @@ agregarAlCarrito: function (req, res) {
     });
 },
 
-
 //
 verCarrito:function(req, res){
     const usuario = req.session.usuario;
