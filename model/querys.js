@@ -57,15 +57,23 @@ agregar_fav:function(conexion, id_usuario, id_productos){
 
 // -VER MI CARRITO PARA CONFIRMACION DE COMPRAS
 
+verCarr:function(conexion,id_usuario, funcion){
+    conexion.query("select p.nombre, p.precio, p.imagen from usuario as u join carrito as c on c.id_usuario = u.id_usuario join carrito_producto as cp on cp.id_carrito = c.id_carrito join productos as p on p.id_productos = cp.id_productos where u.id_usuario=?",[id_usuario],funcion)
+
+},
+
+
+// - TRANSACCION PARA AGREGAR AL CARRITO 
+
 insertarCarrito: function (conexion, id_usuario, callback) {
     const query = "INSERT INTO carrito (id_usuario) VALUES (?)";
     conexion.query(query, [id_usuario], (err, result) => {
         if (err) {
-            console.error("Error al insertar en carrito:", err); // Depuración
-            return callback(err); // Devuelve el error al callback
+            console.error("Error al insertar en carrito:", err); 
+            return callback(err); //* DEVUELVE EL ERROR AL CALLBACK
         }
-        console.log("Resultado de insertarCarrito:", result); // Depuración
-        callback(null, result); // Devuelve el resultado al callback
+        console.log("Resultado de insertarCarrito:", result); //* VERIFICACION DE RESULTADO EN CONSOLA
+        callback(null, result); //* PASAMOS EL RESULTADO AL CALLBACK
     });
 },
 
@@ -74,9 +82,9 @@ insertarCarritoProducto: function(conexion, id_carrito, id_productos, callback) 
     const query = "INSERT INTO carrito_producto (id_carrito, id_productos) VALUES (?, ?)";
     conexion.query(query, [id_carrito, id_productos], (err, result) => {
         if (err) {
-            return callback(err); // Si hay un error, lo pasamos al callback
+            return callback(err); //* DEVUELVE EL ERROR AL CALLBACK
         }
-        callback(null, result); // Si no hay error, pasamos el resultado al callback
+        callback(null, result); //* PASAMOS EL RESULTADO AL CALLBACK
     });
 }
 

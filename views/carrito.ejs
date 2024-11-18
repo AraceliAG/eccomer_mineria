@@ -1,4 +1,47 @@
 <%- include('./layout/cabecera.ejs') %>
 
-
+<div class="container_Carr">
     <h1>Mi carrito</h1>
+</div>
+
+<div class="containerMiCarrito">
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0; i < productos.length; i++) { %>
+                <tr>
+                    <!-- NOMBRE PRODUCTO -->
+                    <td><%= productos[i].nombre %></td>
+                    <td>$<%= productos[i].precio %>.00</td>
+                    
+                    <!-- IMAGEN DEL PRODUCTO -->
+                    <td>
+                        <% if (productos[i].imagen) { %>
+                            <img src="<%= productos[i].imagen %>" alt="<%= productos[i].nombre %>" style="width: 250px; height: auto; border-radius: 8px;">
+                        <% } else { %>
+                            <span>No hay imagen</span>
+                        <% } %>
+                    </td>
+
+                    <!-- BOTON ELIMINAR -->
+                    <td>
+                        <button type="button" class="btn btn-danger">Eliminar del carrito</button>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<!-- Contenedor del total y finalizar compra -->
+<div class="total-container">
+    <h3>Total: $<%= total %>.00</h3> <!-- Muestra el total calculado en el servidor -->
+    <button type="button" class="btn btn-success">Finalizar compra</button>
+</div>

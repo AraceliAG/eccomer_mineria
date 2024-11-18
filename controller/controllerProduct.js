@@ -124,23 +124,6 @@ module.exports={
         
     }, 
 
-    // - AGREGAR FAVORITOS
-    agregar_favorito:function(req, res){
-        const usuario = req.session.usuario;
-        console.log("hola acabo de llegar para agregar favoritos: ", usuario.id_usuario  )
-        const idproducto = req.body.idproductos;
-        console.log('ID PRODUCTO DESDE FUNCION agregar_fav: ', idproducto)
-        producto.agregar_fav(con, usuario.id_usuario, idproducto, function(err){
-
-            res.redirect("descripcion")
-
-        })
-
-        
-        
-        
-    },
-
 
     // - AGREGAR FAVORITOS
 agregar_favorito: function (req, res) {
@@ -215,7 +198,7 @@ agregarAlCarrito: function (req, res) {
                     }
 
                     console.log("Producto agregado al carrito con éxito");
-                    res.render("carrito");
+                    
                 });
             });
         });
@@ -225,10 +208,31 @@ agregarAlCarrito: function (req, res) {
 
 
 verCarrito:function(req, res){
+    const usuario = req.session.usuario;
+    console.log("hola acabo de llegar xD verCarrito: ", usuario  )
 
-    res.render("carrito")
-}
+    console.log("este es el id ", usuario.id_usuario)
+
+    producto.verCarr(con, usuario.id_usuario, function(err,datos){
+
+        
+
+        console.log(datos)
+
+
+        // Sumar los precios de los productos
+        let total = 0;
+        if (datos && datos.length > 0) {
+            total = datos.reduce((sum, producto) => sum + producto.precio, 0);
+        }
+
+        console.log("precio total: ", total);
+        res.render("carrito", {productos:datos, total:total})
+
+    })
+
     
-
+    
+}, 
     
 }

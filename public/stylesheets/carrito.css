@@ -1,0 +1,58 @@
+.container_Carr h1 {
+    text-align: center;
+    margin: 20px 0;
+    padding-left: 20px;
+    color: #333;
+    font-size: 28px;
+}
+
+/* Estilos para el contenedor de la tabla */
+.containerMiCarrito {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo de la tabla */
+.table {
+    margin-top: 20px;
+    background-color: #f8f9fa;
+}
+
+/* Tamaño y centrado de las celdas */
+.table th, .table td {
+    vertical-align: middle;
+    padding: 16px;
+}
+
+/* Alineación de las celdas a la izquierda */
+.table th, .table td {
+    text-align: left;
+}
+
+/* Estilo de la imagen */
+.table img {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.total-container {
+    position: fixed; /* Posiciona el contenedor de forma fija */
+    top:150px; /* Distancia desde la parte superior */
+    right: 200px; /* Distancia desde el borde derecho */
+    background-color: white; /* Fondo blanco para el contenedor */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para el contenedor */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.total-container h3 {
+    margin-bottom: 80px; /* Espaciado inferior entre el total y el botón */
+}
+
+.total-container button {
+    width: 100%; /* Hace que el botón ocupe todo el ancho disponible */
+    padding: 10px; /* Relleno interno para hacer el botón más grande */
+}
+
