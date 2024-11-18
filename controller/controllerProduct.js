@@ -25,7 +25,7 @@ module.exports={
                 return res.status(500).send('Error en el servidor');
             }
             
-            if (!datos.length) { //SI NO SE ENCUENTRAN LOS DATOS REGRESA EL MENSAJE
+            if (!datos.length) { //--SI NO SE ENCUENTRAN LOS DATOS REGRESA EL MENSAJE
                 return res.status(401).send('Correo o contraseña incorrectos');
             }
 
@@ -35,7 +35,7 @@ module.exports={
             console.log("se va enviar este dato: ", datosUsuario)
             req.session.usuario = datosUsuario;
             
-            //SI EXISTE REDIREDIGE AL INDEX
+            //--SI EXISTE REDIREDIGE AL INDEX
             res.redirect('index');
         });
     },
@@ -44,7 +44,7 @@ module.exports={
     //- FUNCION PARA MOSTRAR LOS PRODUCTOS POR DEPARTAMENTO EN EL HOME PRINCIPAL
 
     index:function(req, res){ 
-        //PARA REALIZAR MÁS DE UNA CONSULTAS SE TIENEN QUE AGREGAR COMO SE VE AQUI PRODUCTO>PRODUCTO>PRODUCTO Y SE MANDAN
+        //--PARA REALIZAR MÁS DE UNA CONSULTAS SE TIENEN QUE AGREGAR COMO SE VE AQUI PRODUCTO>PRODUCTO>PRODUCTO Y SE MANDAN
         const usuario = req.session.usuario;
         console.log("hola acabo de llegar xD: ", usuario  )
         
@@ -144,21 +144,21 @@ agregar_favorito: function (req, res) {
 },
 
 agregarAlCarrito: function (req, res) {
-    const usuario = req.session.usuario; // Usuario autenticado
+    const usuario = req.session.usuario; // *USUARIO
     const idUsuario = usuario.id_usuario;
-    const idProducto = req.body.id_productos_C; // Producto a agregar
+    const idProducto = req.body.id_productos_C; // *PRODUCTO DESDE EL FORM 
 
     console.log("Usuario para carrito:", idUsuario);
     console.log("Producto para carrito:", idProducto);
 
-    // Usar la conexión global directamente
+    // --COMIENZO DE TRANSACCIÓN
     con.beginTransaction((err) => {
         if (err) {
             console.error("Error al iniciar transacción:", err);
             return res.status(500).send("Error al iniciar transacción");
         }
 
-        // Insertar en la tabla carrito
+        // --INSERTAR EN LA TABLA 
         producto.insertarCarrito(con, idUsuario, (err, result) => {
             if (err) {
                 console.error("Error al insertar en carrito:", err);
@@ -167,8 +167,8 @@ agregarAlCarrito: function (req, res) {
                 });
             }
 
-            console.log("Resultado de insertarCarrito:", result); // Depuración
-            const idCarrito = result.insertId; // ID del carrito recién creado
+            console.log("Resultado de insertarCarrito:", result); 
+            const idCarrito = result.insertId; // --ID DEL CARRITO CREADO
 
             if (!idCarrito) {
                 console.error("No se obtuvo un ID válido del carrito.");
@@ -177,9 +177,9 @@ agregarAlCarrito: function (req, res) {
                 });
             }
 
-            console.log("ID del carrito insertado:", idCarrito); // Depuración
+            console.log("ID del carrito insertado:", idCarrito); // --COMPROBAR EL ID DEL CARRITO
 
-            // Insertar en la tabla carrito_producto
+            // -FUNCIÓN PARA INSERTAR AL CARRITO DE PRODUCTOS
             producto.insertarCarritoProducto(con, idCarrito, idProducto, (err) => {
                 if (err) {
                     console.error("Error al insertar en carrito_producto:", err);
@@ -188,7 +188,7 @@ agregarAlCarrito: function (req, res) {
                     });
                 }
 
-                // Confirmar la transacción
+                // -- CONFIRMAR TRANSACCION
                 con.commit((err) => {
                     if (err) {
                         console.error("Error al confirmar transacción:", err);
@@ -206,7 +206,7 @@ agregarAlCarrito: function (req, res) {
 },
 
 
-
+//
 verCarrito:function(req, res){
     const usuario = req.session.usuario;
     console.log("hola acabo de llegar xD verCarrito: ", usuario  )
@@ -220,7 +220,7 @@ verCarrito:function(req, res){
         console.log(datos)
 
 
-        // Sumar los precios de los productos
+        // *SUMAR PRECIO 
         let total = 0;
         if (datos && datos.length > 0) {
             total = datos.reduce((sum, producto) => sum + producto.precio, 0);
