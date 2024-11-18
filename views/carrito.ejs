@@ -1,42 +1,4 @@
 <%- include('./layout/cabecera.ejs') %>
 
-<div class="container_fav">
+
     <h1>Mi carrito</h1>
-</div>
-
-<div class="containerFavoritos">
-    <table class="table table-bordered">
-        <thead class="table-dark">
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(let i = 0; i < productos.length; i++) { %>
-                <tr>
-                    
-                    
-                    <!-- NOMBR EPRODUCTO-->
-                    <td><%= productos[i].nombre %></td>
-                    
-                    <!-- IMAGEN DEL PRODUCTO -->
-                    <td>
-                        <% if (productos[i].imagen) { %>
-                            <img src="<%= productos[i].imagen %>" alt="<%= productos[i].nombre %>" style="width: 250px; height: auto; border-radius: 8px;">
-                        <% } else { %>
-                            <span>No hay imagen</span>
-                        <% } %>
-                    </td>
-
-                    <!-- BOTON COMPRAR -->
-                    <td>
-                        <button type="button" class="btn btn-primary">Comprar</button>
-                    </td>
-                </tr>
-            <% } %>
-        </tbody>
-    </table>
-</div>
