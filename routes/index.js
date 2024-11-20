@@ -11,4 +11,7 @@ router.get('/favoritos',controllerMain.verFavoritos);
 router.post('/descripcion/agregar-favorito',controllerMain.agregar_favorito); //-AGREGAR FAVORITOS
 router.post('/descripcion/agregar-carrito',controllerMain.agregarAlCarrito); //-AGREGAR AL CARRITO 
 router.get('/carrito',controllerMain.verCarrito);
+
+router.get('/metodo_pago',controllerMain.verMetodoPago);
+
 module.exports = router;

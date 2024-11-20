@@ -42,6 +42,9 @@
 
 <!-- Contenedor del total y finalizar compra -->
 <div class="total-container">
-    <h3>Total: $<%= total %>.00</h3> <!-- Muestra el total calculado en el servidor -->
-    <button type="button" class="btn btn-success">Finalizar compra</button>
+    <form action="/metodo_pago" >
+        <h3>Total: $<%= total %>.00</h3> <!-- Muestra el total calculado en el servidor -->
+        <button hrf="/metodo_pago" type="button" class="btn btn-success" >Finalizar compra</button>
+    </form>
+   
 </div>

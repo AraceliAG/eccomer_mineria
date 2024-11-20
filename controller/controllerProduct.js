@@ -233,5 +233,10 @@ verCarrito:function(req, res){
     
     
 }, 
+
+
+verMetodoPago:function(req, res){
+    res.render("metodo_pago")
+}
     
 }
