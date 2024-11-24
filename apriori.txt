@@ -1,0 +1,4 @@
+npm audit
+
+
+npm install node-apriori
