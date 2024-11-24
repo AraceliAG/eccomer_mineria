@@ -82,7 +82,7 @@ module.exports={
                                     result.itemsets.forEach(itemset => {
                                     console.log(`Productos: ${itemset.items.join(', ')}, Soporte: ${itemset.support}`);
                                     });
-    
+                                    
                                     // Renderizamos la vista
                                     res.render('index', {
                                         title: 'Application',
@@ -91,7 +91,7 @@ module.exports={
                                         veterinaria: datos3,
                                         salud: datos4,
                                         alimento: datos5,
-                                        reglasApriori: result.associationRules, // Incluimos las reglas generadas
+                                        reglasApriori: result.itemsets, // Incluimos las reglas generadas
                                     });
                                 }).catch(err => {
                                     console.error("Error ejecutando Apriori:", err);
