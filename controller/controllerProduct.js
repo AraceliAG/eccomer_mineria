@@ -1,7 +1,9 @@
 var con = require('../config/conection')
 var producto = require('../model/querys')
-module.exports={
 
+module.exports={
+    
+    
 
     //- FUNCION PARA MOSTRAR EL LOGIN PRINCIAPAL 
     login:function(req, res){
@@ -43,41 +45,63 @@ module.exports={
 
     //- FUNCION PARA MOSTRAR LOS PRODUCTOS POR DEPARTAMENTO EN EL HOME PRINCIPAL
 
-    index:function(req, res){ 
-        //--PARA REALIZAR MÁS DE UNA CONSULTAS SE TIENEN QUE AGREGAR COMO SE VE AQUI PRODUCTO>PRODUCTO>PRODUCTO Y SE MANDAN
+    index: function (req, res) {
+        const { Apriori } = require('node-apriori'); // Aseguramos la importación correcta
         const usuario = req.session.usuario;
-        console.log("hola acabo de llegar xD: ", usuario  )
-        
-        producto.obtener(con, function(err, datos){ 
-
-        producto.obtener2(con, function(err, datos2){
-
-        producto.veterinaria(con, function(err, datos3){
-            
-        producto.salud(con, function(err, datos4){
-
-        producto.alimento(con, function(err, datos5){
-        producto.obtenerTransacciones(con, usuario.id_usuario, function(err, transacciones)  {
-            console.log('transacciones: ', transacciones )
-                
-
-            
-            res.render('index', {title:'Aplication', productos:datos, productos2:datos2, veterinaria:datos3, salud:datos4, alimento:datos5}) //PURO VER
-
-        })
-        })
-
-        
-        })
-        
-        })
-        
-       
-        
-        })
-    })
-
+    
+        producto.obtener(con, function (err, datos) {
+            if (err) return res.status(500).send("Error al obtener productos");
+    
+            producto.obtener2(con, function (err, datos2) {
+                if (err) return res.status(500).send("Error al obtener productos2");
+    
+                producto.veterinaria(con, function (err, datos3) {
+                    if (err) return res.status(500).send("Error al obtener veterinaria");
+    
+                    producto.salud(con, function (err, datos4) {
+                        if (err) return res.status(500).send("Error al obtener salud");
+    
+                        producto.alimento(con, function (err, datos5) {
+                            if (err) return res.status(500).send("Error al obtener alimento");
+    
+                            producto.obtenerTransacciones(con, usuario.id_usuario, function (err, transacciones) {
+                                if (err) {
+                                    console.error("Error al obtener transacciones:", err);
+                                    return res.status(500).send("Error al generar recomendaciones");
+                                }
+    
+                                // Formateamos las transacciones para Apriori
+                                const dataset = transacciones.map(transaccion => transaccion.productos.split(','));
+    
+                                // Configuración y ejecución de Apriori
+                                const supportThreshold = 0.4; // Ajusta el umbral
+                                const apriori = new Apriori(supportThreshold);
+    
+                                apriori.exec(dataset).then(result => {
+                                    console.log("Reglas generadas por Apriori:", result);
+    
+                                    // Renderizamos la vista
+                                    res.render('index', {
+                                        title: 'Application',
+                                        productos: datos,
+                                        productos2: datos2,
+                                        veterinaria: datos3,
+                                        salud: datos4,
+                                        alimento: datos5,
+                                        reglasApriori: result.associationRules, // Incluimos las reglas generadas
+                                    });
+                                }).catch(err => {
+                                    console.error("Error ejecutando Apriori:", err);
+                                    res.status(500).send("Error al procesar Apriori");
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
     },
+    
     
 
     //-PARA VER NUESTRA VISTA DE DESCRIP PRODUCTO AL MOMENTO DE SELECCIONAR UN PRODUCTO EN EL INICIO
