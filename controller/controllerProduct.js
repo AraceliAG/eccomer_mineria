@@ -78,7 +78,10 @@ module.exports={
                                 const apriori = new Apriori(supportThreshold);
     
                                 apriori.exec(dataset).then(result => {
-                                    console.log("Reglas generadas por Apriori:", result);
+                                    console.log("Reglas generadas por Apriori:", result.itemsets);
+                                    result.itemsets.forEach(itemset => {
+                                    console.log(`Productos: ${itemset.items.join(', ')}, Soporte: ${itemset.support}`);
+                                    });
     
                                     // Renderizamos la vista
                                     res.render('index', {

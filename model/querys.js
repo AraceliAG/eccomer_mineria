@@ -99,10 +99,11 @@ obtenerTransacciones2: function(conexion,id_usuario, callback) {
 },
 obtenerTransacciones: function(conexion,id_usuario, callback) {
     const query = `
-        SELECT t.id_transaccion, GROUP_CONCAT(pt.id_productos) AS productos
+        SELECT t.id_transaccion, GROUP_CONCAT(p.nombre) AS productos
         FROM transacciones2 t
         JOIN productos_transaccion2 pt ON t.id_transaccion = pt.id_transaccion
-        WHERE t.id_usuario = ?
+        join productos p on p.id_productos=pt.id_productos
+        WHERE t.id_usuario =?
         GROUP BY t.id_transaccion;
     `
     conexion.query(query, [id_usuario], callback);
