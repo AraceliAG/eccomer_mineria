@@ -72,7 +72,7 @@ module.exports={
     
                                 // Formateamos las transacciones para Apriori
                                 const dataset = transacciones.map(transaccion => transaccion.productos.split(','));
-    
+                                console.log('dataset: ', dataset)
                                 // Configuración y ejecución de Apriori
                                 const supportThreshold = 0.4; // Ajusta el umbral
                                 const apriori = new Apriori(supportThreshold);
