@@ -86,7 +86,18 @@ insertarCarritoProducto: function(conexion, id_carrito, id_productos, callback) 
         }
         callback(null, result); //* PASAMOS EL RESULTADO AL CALLBACK
     });
-}
+},
+
+obtenerTransacciones: function(conexion,id_usuario, callback) {
+    const query = `
+        SELECT id_usuario, GROUP_CONCAT(id_productos) as productos 
+        FROM carrito_producto 
+        JOIN carrito ON carrito_producto.id_carrito = carrito.id_carrito 
+        WHERE id_usuario=?
+    `
+    conexion.query(query, [id_usuario], callback);
+},
+
 
 
 

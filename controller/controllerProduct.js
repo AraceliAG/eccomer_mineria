@@ -57,8 +57,14 @@ module.exports={
         producto.salud(con, function(err, datos4){
 
         producto.alimento(con, function(err, datos5){
+        producto.obtenerTransacciones(con, usuario.id_usuario, function(err, transacciones)  {
+            console.log('transacciones: ', transacciones )
+                
+
+            
             res.render('index', {title:'Aplication', productos:datos, productos2:datos2, veterinaria:datos3, salud:datos4, alimento:datos5}) //PURO VER
 
+        })
         })
 
         
